@@ -1,8 +1,5 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -71,25 +68,17 @@ public class Main {
             option = 2;
         }
 
-        FileReader fileReader = null;
-
-        try {
-            fileReader = new FileReader(fileName);
-        } catch (FileNotFoundException e) {
-            System.out.println("ERROR: Could not open file " + fileName + " as the input file.");
-            return;
-        }
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        Scanner scanner = new Scanner(fileName);
 
         switch (option) {
             case 1:
-                runSFlag(bufferedReader);
+                runSFlag(scanner);
                 break;
             case 2:
-                runPFlag(bufferedReader);
+                runPFlag(scanner);
                 break;
             case 3:
-                runRFlag(bufferedReader);
+                runRFlag(scanner);
                 break;
             default:
                 System.out.println("ERROR:  Unknown option.");
@@ -97,18 +86,22 @@ public class Main {
 
     }
 
-    public static void runSFlag(BufferedReader bufferedReader) throws IOException {
-        String currentLine = "";
-        while (bufferedReader.ready()) {
-            currentLine = bufferedReader.readLine();
+    public static void runSFlag(Scanner scanner) throws IOException {
+        while (true) {
+            String currentWord = scanner.getNextWord();
+            if (currentWord.isEmpty()) {
+                break;
+            } else {
+                System.out.print(currentWord);
+            }
             }
         }
 
-    public static void runPFlag(BufferedReader bufferedReader){
+    public static void runPFlag(Scanner scanner){
 
     }
 
-    public static void runRFlag(BufferedReader bufferedReader){
+    public static void runRFlag(Scanner scanner){
 
     }
 }
