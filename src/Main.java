@@ -88,14 +88,14 @@ public class Main {
 
     public static void runSFlag(Scanner scanner) throws IOException {
         while (true) {
-            String currentWord = scanner.getNextWord();
-            if (currentWord.isEmpty()) {
+            int currentLine = scanner.getCurrentLine();
+            Pair<String, String> currentWord = scanner.getNextWord();
+            System.out.println(currentLine + ": " + currentWord);
+            if (currentWord.isEOF()) {
                 break;
-            } else {
-                System.out.print(currentWord);
-            }
             }
         }
+    }
 
     public static void runPFlag(Scanner scanner){
 

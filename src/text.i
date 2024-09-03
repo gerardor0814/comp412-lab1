@@ -3,7 +3,7 @@
 //
 // This file should parse correctly
 //
-  loadI 27  => r1
+  loadI 27  => r1 //Hello
   loadI 27=>r1
   load  r1 => r2
   load  r1 => r2
