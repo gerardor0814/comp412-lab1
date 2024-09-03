@@ -45,9 +45,7 @@ public class Scanner {
         }
 
         while (currentIndex < currentLine.length()) {
-            if (currentLine.charAt(currentIndex) == ' ') {
-                break;
-            }
+            char currentChar = currentLine.charAt(currentIndex);
             if (currentLine.charAt(currentIndex) == '/') {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == '/') {
@@ -64,6 +62,7 @@ public class Scanner {
                         if (currentLine.charAt(currentIndex) == 'r') {
                             currentIndex++;
                             if (currentLine.charAt(currentIndex) == 'e') {
+                                currentIndex++;
                                 return "store";
                             }
                         }
@@ -71,6 +70,7 @@ public class Scanner {
                 } else if (currentLine.charAt(currentIndex) == 'u') {
                     currentIndex++;
                     if (currentLine.charAt(currentIndex) == 'b') {
+                        currentIndex++;
                         return "sub";
                     }
                 }
@@ -83,6 +83,7 @@ public class Scanner {
                              if (currentLine.charAt(currentIndex) == 'd') {
                                  currentIndex++;
                                  if (currentLine.charAt(currentIndex) == 'I') {
+                                     currentIndex++;
                                      return "loadI";
                                  } else {
                                      currentIndex--;
@@ -99,6 +100,7 @@ public class Scanner {
                                 if (currentLine.charAt(currentIndex) == 'f') {
                                     currentIndex++;
                                     if (currentLine.charAt(currentIndex) == 't') {
+                                        currentIndex++;
                                         return "lshift";
                                     }
                                 }
@@ -107,7 +109,7 @@ public class Scanner {
                     }
                 } else if (currentLine.charAt(currentIndex) == 'r') {
                     currentIndex++;
-                    if (currentLine.charAt(currentIndex) == 's'){
+                    if (currentLine.charAt(currentIndex) == 's') {
                         currentIndex++;
                         if (currentLine.charAt(currentIndex) == 'h') {
                             currentIndex++;
@@ -116,12 +118,25 @@ public class Scanner {
                                 if (currentLine.charAt(currentIndex) == 'f') {
                                     currentIndex++;
                                     if (currentLine.charAt(currentIndex) == 't') {
+                                        currentIndex++;
                                         return "rshift";
                                     }
                              }
                         }
                     }
-                }
+                } else if (currentLine.charAt(currentIndex) >= '0' && currentLine.charAt(currentIndex) <= '9') {
+                        int currentVal = 0;
+                        int temp;
+                        while (currentLine.charAt(currentIndex) >= '0' && currentLine.charAt(currentIndex) <= '9') {
+                            temp = Character.getNumericValue(currentLine.charAt(currentIndex));
+                            currentVal = currentVal * 10 + temp;
+                            currentIndex++;
+                            if (currentIndex > currentLine.length() - 1) {
+                                break;
+                            }
+                        }
+                        return "r" + currentVal;
+                    }
             } else if (currentLine.charAt(currentIndex) == 'm') {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == 'u') {
@@ -129,6 +144,7 @@ public class Scanner {
                     if (currentLine.charAt(currentIndex) == 'l') {
                         currentIndex++;
                         if (currentLine.charAt(currentIndex) == 't') {
+                            currentIndex++;
                             return "mult";
                         }
                     }
@@ -139,19 +155,21 @@ public class Scanner {
                 if (currentLine.charAt(currentIndex) == 'd') {
                     currentIndex++;
                     if (currentLine.charAt(currentIndex) == 'd') {
+                        currentIndex++;
                         return "add";
                     }
                 }
-                
+
             } else if (currentLine.charAt(currentIndex) == 'n') {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == 'o') {
                     currentIndex++;
                     if (currentLine.charAt(currentIndex) == 'p') {
+                        currentIndex++;
                         return "nop";
                     }
                 }
-                
+
             } else if (currentLine.charAt(currentIndex) == 'o') {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == 'u') {
@@ -163,6 +181,7 @@ public class Scanner {
                             if (currentLine.charAt(currentIndex) == 'u') {
                                 currentIndex++;
                                 if (currentLine.charAt(currentIndex) == 't') {
+                                    currentIndex++;
                                     return "output";
                                 }
                             }
@@ -172,13 +191,26 @@ public class Scanner {
             } else if (currentLine.charAt(currentIndex) == '=') {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == '>') {
+                    currentIndex++;
                     return "=>";
                 }
 
             } else if (currentLine.charAt(currentIndex) == ',') {
                 currentIndex++;
                 return ",";
-                
+
+            } else if (currentLine.charAt(currentIndex) >= '0' && currentLine.charAt(currentIndex) <= '9') {
+                int currentVal = 0;
+                int temp;
+                while (currentLine.charAt(currentIndex) >= '0' && currentLine.charAt(currentIndex) <= '9') {
+                    temp = Character.getNumericValue(currentLine.charAt(currentIndex));
+                    currentVal = currentVal * 10 + temp;
+                    currentIndex++;
+                    if (currentIndex > currentLine.length() - 1) {
+                        break;
+                    }
+                }
+                return String.valueOf(currentVal);
             } else {
                 currentIndex++;
                 if (currentIndex == this.currentLine.length()) {
@@ -188,7 +220,6 @@ public class Scanner {
                     }
                     return "\n";
                 }
-                return " ";
             }
         }
         return nextWord;
