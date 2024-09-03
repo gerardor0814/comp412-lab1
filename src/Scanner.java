@@ -81,7 +81,13 @@ public class Scanner {
                          if (currentLine.charAt(currentIndex) == 'a') {
                              currentIndex++;
                              if (currentLine.charAt(currentIndex) == 'd') {
-                                 return "load";
+                                 currentIndex++;
+                                 if (currentLine.charAt(currentIndex) == 'I') {
+                                     return "loadI";
+                                 } else {
+                                     currentIndex--;
+                                     return "load";
+                                 }
                              }
                          }
                     } else if (currentLine.charAt(currentIndex) == 's') {
@@ -101,15 +107,18 @@ public class Scanner {
                     }
                 } else if (currentLine.charAt(currentIndex) == 'r') {
                     currentIndex++;
-                    if (currentLine.charAt(currentIndex) == 'h') {
+                    if (currentLine.charAt(currentIndex) == 's'){
                         currentIndex++;
-                        if (currentLine.charAt(currentIndex) == 'i') {
+                        if (currentLine.charAt(currentIndex) == 'h') {
                             currentIndex++;
-                            if (currentLine.charAt(currentIndex) == 'f') {
+                            if (currentLine.charAt(currentIndex) == 'i') {
                                 currentIndex++;
-                                if (currentLine.charAt(currentIndex) == 't') {
-                                    return "rshift";
-                            }
+                                if (currentLine.charAt(currentIndex) == 'f') {
+                                    currentIndex++;
+                                    if (currentLine.charAt(currentIndex) == 't') {
+                                        return "rshift";
+                                    }
+                             }
                         }
                     }
                 }
@@ -167,15 +176,21 @@ public class Scanner {
                 }
 
             } else if (currentLine.charAt(currentIndex) == ',') {
+                currentIndex++;
                 return ",";
                 
             } else {
                 currentIndex++;
-                break;
+                if (currentIndex == this.currentLine.length()) {
+                    getNextLine();
+                    if (currentLine == null) {
+                        return "";
+                    }
+                    return "\n";
+                }
+                return " ";
             }
         }
-        nextWord += currentLine.charAt(currentIndex);
-        currentIndex++;
         return nextWord;
     }
 
