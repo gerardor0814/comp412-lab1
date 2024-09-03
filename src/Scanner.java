@@ -11,7 +11,7 @@ public class Scanner {
     private String currentLine;
     private int currentLineIndex;
 
-    public Scanner(String fileName) throws IOException {
+    public Scanner(String fileName) {
 
         try {
             fileReader = new FileReader(fileName);
@@ -25,21 +25,22 @@ public class Scanner {
         currentIndex = 0;
     }
 
-    public String getNextWord() throws IOException {
+    public String getNextWord() {
         String nextWord = "";
 
         if (currentIndex < currentLine.length()) {
             while (currentLine.charAt(currentIndex) == ' ') {
-                nextWord += ' ';
                 currentIndex++;
+                if (currentIndex == currentLine.length()) {
+                    return "\n";
+                }
             }
         } else {
-            nextWord += '\n';
-            System.out.print(" " + currentLineIndex);
+            nextWord = "\n";
             this.getNextLine();
-                if (this.currentLine == null) {
-                    return "";
-                }
+            if (this.currentLine == null) {
+                return "";
+            }
             return nextWord;
         }
 
@@ -51,12 +52,130 @@ public class Scanner {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == '/') {
                     this.getNextLine();
-                    return "// \n";
+                    return "\n";
                 }
             }
-            nextWord += currentLine.charAt(currentIndex);
-            currentIndex++;
+            if (currentLine.charAt(currentIndex) == 's') {
+                currentIndex++;
+                if (currentLine.charAt(currentIndex) == 't') {
+                    currentIndex++;
+                    if (currentLine.charAt(currentIndex) == 'o') {
+                        currentIndex++;
+                        if (currentLine.charAt(currentIndex) == 'r') {
+                            currentIndex++;
+                            if (currentLine.charAt(currentIndex) == 'e') {
+                                return "store";
+                            }
+                        }
+                    }
+                } else if (currentLine.charAt(currentIndex) == 'u') {
+                    currentIndex++;
+                    if (currentLine.charAt(currentIndex) == 'b') {
+                        return "sub";
+                    }
+                }
+            } else if (currentLine.charAt(currentIndex) == 'l') {
+                    currentIndex++;
+                    if (currentLine.charAt(currentIndex) == 'o') {
+                         currentIndex++;
+                         if (currentLine.charAt(currentIndex) == 'a') {
+                             currentIndex++;
+                             if (currentLine.charAt(currentIndex) == 'd') {
+                                 return "load";
+                             }
+                         }
+                    } else if (currentLine.charAt(currentIndex) == 's') {
+                        currentIndex++;
+                        if (currentLine.charAt(currentIndex) == 'h') {
+                            currentIndex++;
+                            if (currentLine.charAt(currentIndex) == 'i') {
+                                currentIndex++;
+                                if (currentLine.charAt(currentIndex) == 'f') {
+                                    currentIndex++;
+                                    if (currentLine.charAt(currentIndex) == 't') {
+                                        return "lshift";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else if (currentLine.charAt(currentIndex) == 'r') {
+                    currentIndex++;
+                    if (currentLine.charAt(currentIndex) == 'h') {
+                        currentIndex++;
+                        if (currentLine.charAt(currentIndex) == 'i') {
+                            currentIndex++;
+                            if (currentLine.charAt(currentIndex) == 'f') {
+                                currentIndex++;
+                                if (currentLine.charAt(currentIndex) == 't') {
+                                    return "rshift";
+                            }
+                        }
+                    }
+                }
+            } else if (currentLine.charAt(currentIndex) == 'm') {
+                currentIndex++;
+                if (currentLine.charAt(currentIndex) == 'u') {
+                    currentIndex++;
+                    if (currentLine.charAt(currentIndex) == 'l') {
+                        currentIndex++;
+                        if (currentLine.charAt(currentIndex) == 't') {
+                            return "mult";
+                        }
+                    }
+                }
+
+            } else if (currentLine.charAt(currentIndex) == 'a') {
+                currentIndex++;
+                if (currentLine.charAt(currentIndex) == 'd') {
+                    currentIndex++;
+                    if (currentLine.charAt(currentIndex) == 'd') {
+                        return "add";
+                    }
+                }
+                
+            } else if (currentLine.charAt(currentIndex) == 'n') {
+                currentIndex++;
+                if (currentLine.charAt(currentIndex) == 'o') {
+                    currentIndex++;
+                    if (currentLine.charAt(currentIndex) == 'p') {
+                        return "nop";
+                    }
+                }
+                
+            } else if (currentLine.charAt(currentIndex) == 'o') {
+                currentIndex++;
+                if (currentLine.charAt(currentIndex) == 'u') {
+                    currentIndex++;
+                    if (currentLine.charAt(currentIndex) == 't') {
+                        currentIndex++;
+                        if (currentLine.charAt(currentIndex) == 'p') {
+                            currentIndex++;
+                            if (currentLine.charAt(currentIndex) == 'u') {
+                                currentIndex++;
+                                if (currentLine.charAt(currentIndex) == 't') {
+                                    return "output";
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if (currentLine.charAt(currentIndex) == '=') {
+                currentIndex++;
+                if (currentLine.charAt(currentIndex) == '>') {
+                    return "=>";
+                }
+
+            } else if (currentLine.charAt(currentIndex) == ',') {
+                return ",";
+                
+            } else {
+                currentIndex++;
+                break;
+            }
         }
+        nextWord += currentLine.charAt(currentIndex);
+        currentIndex++;
         return nextWord;
     }
 
@@ -69,5 +188,5 @@ public class Scanner {
         }
         currentIndex = 0;
     }
-
 }
+            
