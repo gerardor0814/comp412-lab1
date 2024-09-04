@@ -1,4 +1,3 @@
-import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Main {
@@ -88,8 +87,8 @@ public class Main {
 
     public static void runSFlag(Scanner scanner) throws IOException {
         while (true) {
-            int currentLine = scanner.getCurrentLine();
-            Pair<String, String> currentWord = scanner.getNextWord();
+            int currentLine = scanner.getCurrentLineIndex();
+            Pair currentWord = scanner.getNextWord();
             System.out.println(currentLine + ": " + currentWord);
             if (currentWord.isEOF()) {
                 break;

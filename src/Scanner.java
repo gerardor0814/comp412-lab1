@@ -25,22 +25,22 @@ public class Scanner {
         currentIndex = 0;
     }
 
-    public Pair<String, String> getNextWord() {
+    public Pair getNextWord() {
         String nextWord = "";
 
         if (currentIndex < currentLine.length()) {
             while (currentLine.charAt(currentIndex) == ' ') {
                 currentIndex++;
                 if (currentIndex == currentLine.length()) {
-                    return new Pair<>("NEWLINE", "\"\\n\"");
+                    return new Pair(10, 0);
                 }
             }
         } else {
             this.getNextLine();
             if (this.currentLine == null) {
-                return new Pair<>("ENDFILE", "\"\"");
+                return new Pair(9, 0);
             } else {
-                return new Pair<>("NEWLINE", "\"\\n\"");
+                return new Pair(10, 0);
             }
         }
 
@@ -50,7 +50,7 @@ public class Scanner {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == '/') {
                     this.getNextLine();
-                    return new Pair<>("NEWLINE", "\"\\n\"");
+                    return new Pair(10,0);
                 }
             }
             if (currentLine.charAt(currentIndex) == 's') {
@@ -63,7 +63,7 @@ public class Scanner {
                             currentIndex++;
                             if (currentLine.charAt(currentIndex) == 'e') {
                                 currentIndex++;
-                                return new Pair<>("MEMOP", "\"store\"");
+                                return new Pair(0, 1);
                             }
                         }
                     }
@@ -71,7 +71,7 @@ public class Scanner {
                     currentIndex++;
                     if (currentLine.charAt(currentIndex) == 'b') {
                         currentIndex++;
-                        return new Pair<>("ARITHOP", "\"sub\"");
+                        return new Pair(2, 1);
                     }
                 }
             } else if (currentLine.charAt(currentIndex) == 'l') {
@@ -84,10 +84,10 @@ public class Scanner {
                                  currentIndex++;
                                  if (currentLine.charAt(currentIndex) == 'I') {
                                      currentIndex++;
-                                     return new Pair<>("LOADI", "\"loadI\"");
+                                     return new Pair(1, 0);
                                  } else {
                                      currentIndex--;
-                                     return new Pair<>("MEMOP", "\"load\"");
+                                     return new Pair(0, 0);
                                  }
                              }
                          }
@@ -101,7 +101,7 @@ public class Scanner {
                                     currentIndex++;
                                     if (currentLine.charAt(currentIndex) == 't') {
                                         currentIndex++;
-                                        return new Pair<>("ARITHOP", "\"lshift\"");
+                                        return new Pair(2, 3);
                                     }
                                 }
                             }
@@ -119,7 +119,7 @@ public class Scanner {
                                     currentIndex++;
                                     if (currentLine.charAt(currentIndex) == 't') {
                                         currentIndex++;
-                                        return new Pair<>("ARITHOP", "\"rshift\"");
+                                        return new Pair(2, 4);
                                     }
                              }
                         }
@@ -135,7 +135,7 @@ public class Scanner {
                                 break;
                             }
                         }
-                        return new Pair<>("REG", "\"r" + currentVal + "\"");
+                        return new Pair(6, currentVal);
                     }
             } else if (currentLine.charAt(currentIndex) == 'm') {
                 currentIndex++;
@@ -145,7 +145,7 @@ public class Scanner {
                         currentIndex++;
                         if (currentLine.charAt(currentIndex) == 't') {
                             currentIndex++;
-                            return new Pair<>("ARITHOP", "\"mult\"");
+                            return new Pair(2, 2);
                         }
                     }
                 }
@@ -156,7 +156,7 @@ public class Scanner {
                     currentIndex++;
                     if (currentLine.charAt(currentIndex) == 'd') {
                         currentIndex++;
-                        return new Pair<>("ARITHOP", "\"add\"");
+                        return new Pair(2, 0);
                     }
                 }
 
@@ -166,7 +166,7 @@ public class Scanner {
                     currentIndex++;
                     if (currentLine.charAt(currentIndex) == 'p') {
                         currentIndex++;
-                        return new Pair<>("NOP", "\"nop\"");
+                        return new Pair(4, 0);
                     }
                 }
 
@@ -182,7 +182,7 @@ public class Scanner {
                                 currentIndex++;
                                 if (currentLine.charAt(currentIndex) == 't') {
                                     currentIndex++;
-                                    return new Pair<>("OUTPUT", "\"output\"");
+                                    return new Pair(3, 0);
                                 }
                             }
                         }
@@ -192,12 +192,12 @@ public class Scanner {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == '>') {
                     currentIndex++;
-                    return new Pair<>("INTO", "\"=>\"");
+                    return new Pair(8, 0);
                 }
 
             } else if (currentLine.charAt(currentIndex) == ',') {
                 currentIndex++;
-                return new Pair<>("COMMA", "\",\"");
+                return new Pair(7, 0);
 
             } else if (currentLine.charAt(currentIndex) >= '0' && currentLine.charAt(currentIndex) <= '9') {
                 int currentVal = 0;
@@ -210,19 +210,19 @@ public class Scanner {
                         break;
                     }
                 }
-                return new Pair<>("CONST", "\"" + currentVal + "\"");
+                return new Pair(5, currentVal);
             } else {
                 currentIndex++;
                 if (currentIndex == this.currentLine.length()) {
                     getNextLine();
                     if (currentLine == null) {
-                        return new Pair<>("ENDFILE", "\"\"");
+                        return new Pair(9, 0);
                     }
-                    return new Pair<>("NEWLINE", "\"\\n\"");
+                    return new Pair(10, 0);
                 }
             }
         }
-        return new Pair<>(nextWord, nextWord);
+        return new Pair(0, 0);
     }
 
     private void getNextLine() {
@@ -235,7 +235,7 @@ public class Scanner {
         currentIndex = 0;
     }
 
-    public int getCurrentLine() {
+    public int getCurrentLineIndex() {
         return currentLineIndex;
     }
 }
