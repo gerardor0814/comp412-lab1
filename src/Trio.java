@@ -1,4 +1,4 @@
-public record Pair(int Category, int Words) {
+public record Trio(int Category, int Words, int Line) {
 
     /**
      * 0 - MEMOP: load, store
@@ -12,6 +12,7 @@ public record Pair(int Category, int Words) {
      * 8 - INTO: “=>”
      * 9 - EOF: input has been exhausted
      * 10 - EOL: end of the current line
+     * 11 - Error, don't print.
      */
 
     @Override
@@ -20,65 +21,67 @@ public record Pair(int Category, int Words) {
         String words = "";
         switch (Category) {
             case 0 -> {
-                category = "MEMOP";
+                category = ": < MEMOP, ";
                 if (Words == 0) {
-                    words = "\"load\"";
+                    words = "\"load\" >\n";
                 } else {
-                    words = "\"store\"";
+                    words = "\"store\" >\n";
                 }
             }
             case 1 -> {
-                category = "LOADI";
-                words = "\"loadI\"";
+                category = ": < LOADI, ";
+                words = "\"loadI\" >\n";
             }
             case 2 -> {
-                category = "ARITHOP";
+                category = ": < ARITHOP, ";
                 if (Words == 0) {
-                    words = "\"add\"";
+                    words = "\"add\" >\n";
                 } else if (Words == 1) {
-                    words = "\"sub\"";
+                    words = "\"sub\" >\n";
                 } else if (Words == 2) {
-                    words = "\"mult\"";
+                    words = "\"mult\" >\n";
                 } else if (Words == 3) {
-                    words = "\"lshift\"";
+                    words = "\"lshift\" >\n";
                 } else if (Words == 4) {
-                    words = "\"rshift\"";
+                    words = "\"rshift\" >\n";
                 }
             }
             case 3 -> {
-                category = "OUTPUT";
-                words = "\"output\"";
+                category = ": < OUTPUT, ";
+                words = "\"output\" >\n";
             }
             case 4 -> {
-                category = "NOP";
-                words = "\"nop\"";
+                category = ": < NOP, ";
+                words = "\"nop\" >\n";
             }
             case 5 -> {
-                category = "CONSTANT";
-                words = "\"" + Words + "\"";
+                category = ": < CONST, ";
+                words = "\"" + Words + "\" >\n";
             }
             case 6 -> {
-                category = "REGISTER";
-                words = "\"r" + Words + "\"";
+                category = ": < REG, ";
+                words = "\"r" + Words + "\" >\n";
             }
             case 7 -> {
-                category = "COMMA";
-                words = "\",\"";
+                category = ": < COMMA, ";
+                words = "\",\" >\n";
             }
             case 8 -> {
-                category = "INTO";
-                words = "\"=>\"";
+                category = ": < INTO, ";
+                words = "\"=>\" >\n";
             }
             case 9 -> {
-                category = "ENDFILE";
-                words = "\"\"";
+                category = ": < ENDFILE, ";
+                words = "\"\" >\n";
             }
             case 10 -> {
-                category = "NEWLINE";
-                words = "\"\\n\"";
+                category = ": < NEWLINE, ";
+                words = "\"\\n\" >\n";
+            }
+            case 11 -> {
             }
         }
-        return "< " + category + ", " + words + " >";
+        return Line + category + words;
     }
 
     public boolean isEOF() {

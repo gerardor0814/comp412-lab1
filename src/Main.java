@@ -87,9 +87,8 @@ public class Main {
 
     public static void runSFlag(Scanner scanner) throws IOException {
         while (true) {
-            int currentLine = scanner.getCurrentLineIndex();
-            Pair currentWord = scanner.getNextWord();
-            System.out.println(currentLine + ": " + currentWord);
+            Trio currentWord = scanner.getNextWord();
+            System.out.print(currentWord);
             if (currentWord.isEOF()) {
                 break;
             }
