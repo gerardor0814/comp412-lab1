@@ -346,7 +346,7 @@ public class Scanner {
         return new Trio(10, 0, currentLineIndex);
     }
 
-    private void getNextLine() {
+    public void getNextLine() {
         try {
             currentLine = bufferedReader.readLine();
             currentLineIndex++;
@@ -360,10 +360,6 @@ public class Scanner {
         }
         currentIndex = 0;
         currentLineLength = currentLine.length();
-    }
-
-    public int getCurrentLineIndex() {
-        return currentLineIndex;
     }
 }
             

@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9cc712e1-e89a-453e-afdb-e19a47903930" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Trio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Trio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/text.i" beforeDir="false" afterPath="$PROJECT_DIR$/src/text.i" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +60,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="lab1" />
-      <option name="PROGRAM_PARAMETERS" value="-s src/text.i" />
+      <option name="PROGRAM_PARAMETERS" value="-r src/text.i" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -91,11 +92,22 @@
       <workItem from="1725220973770" duration="3526000" />
       <workItem from="1725224993064" duration="35039000" />
       <workItem from="1725639026506" duration="9034000" />
-      <workItem from="1725898362698" duration="2055000" />
+      <workItem from="1725898362698" duration="10502000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Parser.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

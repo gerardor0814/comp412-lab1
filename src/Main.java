@@ -68,16 +68,17 @@ public class Main {
         }
 
         Scanner scanner = new Scanner(fileName);
+        Parser parser = new Parser(scanner);
 
         switch (option) {
             case 1:
-                runSFlag(scanner);
+                runSFlag(parser);
                 break;
             case 2:
-                runPFlag(scanner);
+                runPFlag(parser);
                 break;
             case 3:
-                runRFlag(scanner);
+                runRFlag(parser);
                 break;
             default:
                 System.out.println("ERROR:  Unknown option.");
@@ -85,21 +86,14 @@ public class Main {
 
     }
 
-    public static void runSFlag(Scanner scanner) throws IOException {
-        while (true) {
-            Trio currentWord = scanner.getNextWord();
-            System.out.print(currentWord);
-            if (currentWord.isEOF()) {
-                break;
-            }
-        }
+    public static void runSFlag(Parser parser) throws IOException {
+        parser.parseS();
     }
 
-    public static void runPFlag(Scanner scanner){
-
+    public static void runPFlag(Parser parser){
     }
 
-    public static void runRFlag(Scanner scanner){
-
+    public static void runRFlag(Parser parser){
+        parser.parseR();
     }
 }
