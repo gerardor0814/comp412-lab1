@@ -79,6 +79,7 @@ public record Trio(int Category, int Words, int Line) {
                 words = "\"\\n\" >\n";
             }
             case 11 -> {
+                return "";
             }
         }
         return Line + category + words;

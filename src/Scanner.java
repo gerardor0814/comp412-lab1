@@ -27,18 +27,15 @@ public class Scanner {
     }
 
     public Trio getNextWord() {
-        if (currentIndex < currentLineLength) {
-            while (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
-                currentIndex++;
-                if (currentIndex == currentLineLength) {
-                    return new Trio(10, 0, currentLineIndex);
-                }
-            }
-        } else {
+        if (currentIndex >= currentLineLength) {
             this.getNextLine();
             if (this.currentLine == null) {
                 return new Trio(9, 0, currentLineIndex);
-            } else {
+            }
+        }
+        while (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
+            currentIndex++;
+            if (currentIndex == currentLineLength) {
                 return new Trio(10, 0, currentLineIndex);
             }
         }
@@ -47,7 +44,7 @@ public class Scanner {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == '/') {
                     this.getNextLine();
-                    return new Trio(10,0, currentLineIndex);
+                    return new Trio(10,0, currentLineIndex - 1);
                 } else {
                     System.out.println("ERROR " + currentLineIndex + ": \"/" + currentLine.charAt(currentIndex) + "\" is not a valid word");
                     currentIndex = currentLineLength;
@@ -339,18 +336,14 @@ public class Scanner {
                 }
                 return new Trio(5, currentVal, currentLineIndex);
             } else if (currentLine.charAt(currentIndex) == '\n') {
-                    this.getNextLine();
-                    if (this.currentLine == null) {
-                        return new Trio(9, 0, currentLineIndex);
-                    } else {
-                        return new Trio(10, 0, currentLineIndex);
-                    }
+                    currentIndex++;
+                    return new Trio(10, 0, currentLineIndex);
             }
             else {
                  System.out.println("ERROR " + currentLineIndex + ": \"" + currentLine.charAt(currentIndex) + "\" is not a valid word");
                 currentIndex = currentLineLength;
             }
-        return new Trio(11, 0, currentLineIndex);
+        return new Trio(10, 0, currentLineIndex);
     }
 
     private void getNextLine() {
