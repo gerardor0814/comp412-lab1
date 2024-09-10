@@ -4,8 +4,8 @@
 // This file should parse correctly
 //
   loadI 27  => r1 //Hello
-  loadI =>r1
-  load  r1 => r2
+  loadI 26 =>r1
+  load  r1=> r2
   load  r1 => r2
   load  => r2
   lshi

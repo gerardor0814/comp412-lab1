@@ -36,19 +36,19 @@ public class Parser {
                                 if (currentWord.Category() == 6) {
                                     currentWord = scanner.getNextWord();
                                     if (currentWord.Category() != 10) {
-                                        System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in load operation");
+                                        System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in load operation");
                                         scanner.getNextLine();
                                     }
                                 } else {
-                                    System.out.println("ERROR " + currentWord.Line() + ": Missing target register in load operation");
+                                    System.err.println("ERROR " + currentWord.Line() + ": Missing target register in load operation");
                                     scanner.getNextLine();
                                 }
                             } else {
-                                System.out.println("ERROR " + currentWord.Line() + ": Missing into symbol in load operation");
+                                System.err.println("ERROR " + currentWord.Line() + ": Missing into symbol in load operation");
                                 scanner.getNextLine();
                             }
                         } else {
-                            System.out.println("ERROR " + currentWord.Line() + ": Missing source register in load operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Missing source register in load operation");
                             scanner.getNextLine();
                         }
                     } else {
@@ -60,19 +60,19 @@ public class Parser {
                                 if (currentWord.Category() == 6) {
                                     currentWord = scanner.getNextWord();
                                     if (currentWord.Category() != 10) {
-                                        System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in store operation");
+                                        System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in store operation");
                                         scanner.getNextLine();
                                     }
                                 } else {
-                                    System.out.println("ERROR " + currentWord.Line() + ": Missing target register in store operation");
+                                    System.err.println("ERROR " + currentWord.Line() + ": Missing target register in store operation");
                                     scanner.getNextLine();
                                 }
                             } else {
-                                System.out.println("ERROR " + currentWord.Line() + ": Missing into symbol in store operation");
+                                System.err.println("ERROR " + currentWord.Line() + ": Missing into symbol in store operation");
                                 scanner.getNextLine();
                             }
                         } else {
-                            System.out.println("ERROR " + currentWord.Line() + ": Missing source register in store operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Missing source register in store operation");
                             scanner.getNextLine();
                         }
                     }
@@ -86,19 +86,19 @@ public class Parser {
                             if (currentWord.Category() == 6) {
                                 currentWord = scanner.getNextWord();
                                 if (currentWord.Category() != 10) {
-                                    System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in loadI operation");
+                                    System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in loadI operation");
                                     scanner.getNextLine();
                                 }
                             } else {
-                                System.out.println("ERROR " + currentWord.Line() + ": Missing target register in loadI operation");
+                                System.err.println("ERROR " + currentWord.Line() + ": Missing target register in loadI operation");
                                 scanner.getNextLine();
                             }
                         } else {
-                            System.out.println("ERROR " + currentWord.Line() + ": Missing into symbol in loadI operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Missing into symbol in loadI operation");
                             scanner.getNextLine();
                         }
                     } else {
-                        System.out.println("ERROR " + currentWord.Line() + ": Missing constant in loadI operation");
+                        System.err.println("ERROR " + currentWord.Line() + ": Missing constant in loadI operation");
                         scanner.getNextLine();
                     }
                 }
@@ -116,27 +116,27 @@ public class Parser {
                                         if (currentWord.Category() == 6) {
                                             currentWord = scanner.getNextWord();
                                             if (currentWord.Category() != 10) {
-                                                System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in add operation");
+                                                System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in add operation");
                                                 scanner.getNextLine();
                                             }
                                         } else {
-                                            System.out.println("ERROR " + currentWord.Line() + ": Missing target register in add operation");
+                                            System.err.println("ERROR " + currentWord.Line() + ": Missing target register in add operation");
                                             scanner.getNextLine();
                                         }
                                     } else {
-                                        System.out.println("ERROR " + currentWord.Line() + ": Missing into symbol in add operation");
+                                        System.err.println("ERROR " + currentWord.Line() + ": Missing into symbol in add operation");
                                         scanner.getNextLine();
                                     }
                                 } else {
-                                    System.out.println("ERROR " + currentWord.Line() + ": Missing second source register in add operation");
+                                    System.err.println("ERROR " + currentWord.Line() + ": Missing second source register in add operation");
                                     scanner.getNextLine();
                                 }
                             } else {
-                                System.out.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in add operation");
+                                System.err.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in add operation");
                                 scanner.getNextLine();
                             }
                         } else {
-                            System.out.println("ERROR " + currentWord.Line() + ": Missing first source register in add operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Missing first source register in add operation");
                             scanner.getNextLine();
                         }
                     } else if (currentWord.Words() == 1) {
@@ -152,27 +152,27 @@ public class Parser {
                                         if (currentWord.Category() == 6) {
                                             currentWord = scanner.getNextWord();
                                             if (currentWord.Category() != 10) {
-                                                System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in sub operation");
+                                                System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in sub operation");
                                                 scanner.getNextLine();
                                             }
                                         } else {
-                                            System.out.println("ERROR " + currentWord.Line() + ": Missing target register in sub operation");
+                                            System.err.println("ERROR " + currentWord.Line() + ": Missing target register in sub operation");
                                             scanner.getNextLine();
                                         }
                                     } else {
-                                        System.out.println("ERROR " + currentWord.Line() + ": Missing into symbol in sub operation");
+                                        System.err.println("ERROR " + currentWord.Line() + ": Missing into symbol in sub operation");
                                         scanner.getNextLine();
                                     }
                                 } else {
-                                    System.out.println("ERROR " + currentWord.Line() + ": Missing second source register in sub operation");
+                                    System.err.println("ERROR " + currentWord.Line() + ": Missing second source register in sub operation");
                                     scanner.getNextLine();
                                 }
                             } else {
-                                System.out.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in sub operation");
+                                System.err.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in sub operation");
                                 scanner.getNextLine();
                             }
                         } else {
-                            System.out.println("ERROR " + currentWord.Line() + ": Missing first source register in sub operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Missing first source register in sub operation");
                             scanner.getNextLine();
                         }
                     } else if (currentWord.Words() == 2) {
@@ -188,27 +188,27 @@ public class Parser {
                                         if (currentWord.Category() == 6) {
                                             currentWord = scanner.getNextWord();
                                             if (currentWord.Category() != 10) {
-                                                System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in mult operation");
+                                                System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in mult operation");
                                                 scanner.getNextLine();
                                             }
                                         } else {
-                                            System.out.println("ERROR " + currentWord.Line() + ": Missing target register in mult operation");
+                                            System.err.println("ERROR " + currentWord.Line() + ": Missing target register in mult operation");
                                             scanner.getNextLine();
                                         }
                                     } else {
-                                        System.out.println("ERROR " + currentWord.Line() + ": Missing into symbol in mult operation");
+                                        System.err.println("ERROR " + currentWord.Line() + ": Missing into symbol in mult operation");
                                         scanner.getNextLine();
                                     }
                                 } else {
-                                    System.out.println("ERROR " + currentWord.Line() + ": Missing second source register in mult operation");
+                                    System.err.println("ERROR " + currentWord.Line() + ": Missing second source register in mult operation");
                                     scanner.getNextLine();
                                 }
                             } else {
-                                System.out.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in mult operation");
+                                System.err.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in mult operation");
                                 scanner.getNextLine();
                             }
                         } else {
-                            System.out.println("ERROR " + currentWord.Line() + ": Missing first source register in mult operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Missing first source register in mult operation");
                             scanner.getNextLine();
                         }
                     } else if (currentWord.Words() == 3) {
@@ -224,27 +224,27 @@ public class Parser {
                                         if (currentWord.Category() == 6) {
                                             currentWord = scanner.getNextWord();
                                             if (currentWord.Category() != 10) {
-                                                System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in lshift operation");
+                                                System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in lshift operation");
                                                 scanner.getNextLine();
                                             }
                                         } else {
-                                            System.out.println("ERROR " + currentWord.Line() + ": Missing target register in lshift operation");
+                                            System.err.println("ERROR " + currentWord.Line() + ": Missing target register in lshift operation");
                                             scanner.getNextLine();
                                         }
                                     } else {
-                                        System.out.println("ERROR " + currentWord.Line() + ": Missing into symbol in lshift operation");
+                                        System.err.println("ERROR " + currentWord.Line() + ": Missing into symbol in lshift operation");
                                         scanner.getNextLine();
                                     }
                                 } else {
-                                    System.out.println("ERROR " + currentWord.Line() + ": Missing second source register in lshift operation");
+                                    System.err.println("ERROR " + currentWord.Line() + ": Missing second source register in lshift operation");
                                     scanner.getNextLine();
                                 }
                             } else {
-                                System.out.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in lshift operation");
+                                System.err.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in lshift operation");
                                 scanner.getNextLine();
                             }
                         } else {
-                            System.out.println("ERROR " + currentWord.Line() + ": Missing first source register in lshift operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Missing first source register in lshift operation");
                             scanner.getNextLine();
                         }
                     } else {
@@ -260,27 +260,27 @@ public class Parser {
                                         if (currentWord.Category() == 6) {
                                             currentWord = scanner.getNextWord();
                                             if (currentWord.Category() != 10) {
-                                                System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in rshift operation");
+                                                System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in rshift operation");
                                                 scanner.getNextLine();
                                             }
                                         } else {
-                                            System.out.println("ERROR " + currentWord.Line() + ": Missing target register in rshift operation");
+                                            System.err.println("ERROR " + currentWord.Line() + ": Missing target register in rshift operation");
                                             scanner.getNextLine();
                                         }
                                     } else {
-                                        System.out.println("ERROR " + currentWord.Line() + ": Missing into symbol in rshift operation");
+                                        System.err.println("ERROR " + currentWord.Line() + ": Missing into symbol in rshift operation");
                                         scanner.getNextLine();
                                     }
                                 } else {
-                                    System.out.println("ERROR " + currentWord.Line() + ": Missing second source register in rshift operation");
+                                    System.err.println("ERROR " + currentWord.Line() + ": Missing second source register in rshift operation");
                                     scanner.getNextLine();
                                 }
                             } else {
-                                System.out.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in rshift operation");
+                                System.err.println("ERROR " + currentWord.Line() + ": Missing comma between source registers in rshift operation");
                                 scanner.getNextLine();
                             }
                         } else {
-                            System.out.println("ERROR " + currentWord.Line() + ": Missing first source register in rshift operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Missing first source register in rshift operation");
                             scanner.getNextLine();
                         }
                     }
@@ -290,18 +290,18 @@ public class Parser {
                     if (currentWord.Category() == 5) {
                         currentWord = scanner.getNextWord();
                         if (currentWord.Category() != 10) {
-                            System.out.println("ERROR " + currentWord.Line() + ": Extraneous argument in the output operation");
+                            System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in the output operation");
                             scanner.getNextLine();
                         }
                     } else {
-                        System.out.println("ERROR " + currentWord.Line() + ": Missing constant in output operation");
+                        System.err.println("ERROR " + currentWord.Line() + ": Missing constant in output operation");
                         scanner.getNextLine();
                     }
                 }
                 case 4 -> {
                     currentWord = scanner.getNextWord();
                     if (currentWord.Category() != 10) {
-                        System.out.println("ERROR " + currentWord.Line() + ": extraneous argument in the nop operation");
+                        System.err.println("ERROR " + currentWord.Line() + ": extraneous argument in the nop operation");
                         scanner.getNextLine();
                     }
                 }
@@ -312,19 +312,22 @@ public class Parser {
                     continue;
                 }
                 default -> {
-                    System.out.println("ERROR " + currentWord.Line() + ": illegal start to a line");
+                    System.err.println("ERROR " + currentWord.Line() + ": illegal start to a line");
                     scanner.getNextLine();
                 }
             }
         }
     }
 
-    public void parseS() {
+    public void parseP() {
         Trio currentWord;
         do {
             currentWord = scanner.getNextWord();
-            System.out.print(currentWord);
         } while (!currentWord.isEOF());
+        if (scanner.hasErrors()) {
+            System.err.println("Parse found errors");
+        } else {
+            System.out.println("Parse succeeded");
+        }
     }
-
 }

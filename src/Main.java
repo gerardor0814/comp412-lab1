@@ -72,7 +72,7 @@ public class Main {
 
         switch (option) {
             case 1:
-                runSFlag(parser);
+                runSFlag(scanner);
                 break;
             case 2:
                 runPFlag(parser);
@@ -81,16 +81,21 @@ public class Main {
                 runRFlag(parser);
                 break;
             default:
-                System.out.println("ERROR:  Unknown option.");
+                System.err.println("ERROR:  Unknown option.");
         }
 
     }
 
-    public static void runSFlag(Parser parser) throws IOException {
-        parser.parseS();
-    }
+    public static void runSFlag(Scanner scanner) throws IOException {
+            Trio currentWord;
+            do {
+                currentWord = scanner.getNextWord();
+                System.out.print(currentWord);
+            } while (!currentWord.isEOF());
+        }
 
     public static void runPFlag(Parser parser){
+        parser.parseP();
     }
 
     public static void runRFlag(Parser parser){
