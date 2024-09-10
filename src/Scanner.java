@@ -63,7 +63,7 @@ public class Scanner {
                             currentIndex++;
                             if (currentLine.charAt(currentIndex) == 'e') {
                                 currentIndex++;
-                                if (currentLine.charAt(currentIndex) == ' ') {
+                                if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
                                     currentIndex++;
                                     return new Trio(0, 1, currentLineIndex);
                                 }
@@ -91,7 +91,7 @@ public class Scanner {
                     currentIndex++;
                     if (currentLine.charAt(currentIndex) == 'b') {
                         currentIndex++;
-                        if (currentLine.charAt(currentIndex) == ' ') {
+                        if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
                             currentIndex++;
                             return new Trio(2, 1, currentLineIndex);
                         } else {
@@ -119,7 +119,7 @@ public class Scanner {
                                  currentIndex++;
                                  if (currentLine.charAt(currentIndex) == 'I') {
                                      currentIndex++;
-                                     if (currentLine.charAt(currentIndex) == ' ') {
+                                     if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
                                          currentIndex++;
                                          return new Trio(1, 0, currentLineIndex);
                                      } else {
@@ -127,7 +127,7 @@ public class Scanner {
                                          hasErrors = true;
                                          currentIndex = currentLineLength;
                                      }
-                                 } else if (currentLine.charAt(currentIndex) == ' ') {
+                                 } else if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
                                      return new Trio(0, 0, currentLineIndex);
                                  } else {
                                      System.err.println("ERROR " + currentLineIndex + ": No whitespace after load operation");
@@ -154,7 +154,7 @@ public class Scanner {
                                     currentIndex++;
                                     if (currentLine.charAt(currentIndex) == 't') {
                                         currentIndex++;
-                                        if (currentLine.charAt(currentIndex) == ' ') {
+                                        if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
                                             currentIndex++;
                                             return new Trio(2, 3, currentLineIndex);
                                         } else {
@@ -199,7 +199,7 @@ public class Scanner {
                                     currentIndex++;
                                     if (currentLine.charAt(currentIndex) == 't') {
                                         currentIndex++;
-                                        if (currentLine.charAt(currentIndex) == ' ') {
+                                        if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
                                             currentIndex++;
                                             return new Trio(2, 4, currentLineIndex);
                                         } else {
@@ -248,7 +248,7 @@ public class Scanner {
                         currentIndex++;
                         if (currentLine.charAt(currentIndex) == 't') {
                             currentIndex++;
-                            if (currentLine.charAt(currentIndex) == ' '){
+                            if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t'){
                                 currentIndex++;
                                 return new Trio(2, 2, currentLineIndex);
                             } else {
@@ -277,7 +277,7 @@ public class Scanner {
                     currentIndex++;
                     if (currentLine.charAt(currentIndex) == 'd') {
                         currentIndex++;
-                        if (currentLine.charAt(currentIndex) == ' ') {
+                        if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
                             currentIndex++;
                             return new Trio(2, 0, currentLineIndex);
                         } else {
@@ -324,7 +324,7 @@ public class Scanner {
                                 currentIndex++;
                                 if (currentLine.charAt(currentIndex) == 't') {
                                     currentIndex++;
-                                    if (currentLine.charAt(currentIndex) == ' ') {
+                                    if (currentLine.charAt(currentIndex) == ' ' || currentLine.charAt(currentIndex) == '\t') {
                                         currentIndex++;
                                         return new Trio(3, 0, currentLineIndex);
                                     } else {

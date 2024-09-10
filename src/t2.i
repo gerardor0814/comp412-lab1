@@ -8,7 +8,6 @@
   load  r1=> r2
   load  r1 => r2
   load  => r2
-  lshi
   add   r1,r2 => r3
   sub   r3, r4 => r5
   mult  r5, r6 => r10
