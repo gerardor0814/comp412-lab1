@@ -388,31 +388,35 @@ public class Scanner {
                     return new Trio(10, 0, currentLineIndex);
             }
             else {
-                System.err.println("ERROR " + currentLineIndex + ": \"" + currentLine.charAt(currentIndex) + "\" is not a valid word");
-                hasErrors = true;
-                currentIndex = currentLineLength;
+                System.err.println("ERROR " + this.currentLineIndex + ": \"" + this.currentLine.charAt(this.currentIndex) + "\" is not a valid word");
+                this.hasErrors = true;
+                this.currentIndex = this.currentLineLength;
             }
         return new Trio(10, 0, currentLineIndex);
     }
 
     public void getNextLine() {
         try {
-            currentLine = bufferedReader.readLine();
-            currentLineIndex++;
+            this.currentLine = this.bufferedReader.readLine();
+            this.currentLineIndex++;
         } catch (IOException e) {
             System.err.println("ERROR: Could not read next line from file");
         }
-        if (currentLine == null) {
+        if (this.currentLine == null) {
             return;
         } else {
-            currentLine = currentLine + '\n';
+            this.currentLine = this.currentLine + '\n';
         }
-        currentIndex = 0;
-        currentLineLength = currentLine.length();
+        this.currentIndex = 0;
+        this.currentLineLength = this.currentLine.length();
     }
 
     public boolean hasErrors() {
-        return hasErrors;
+        return this.hasErrors;
+    }
+
+    public int getCurrentLineIndex() {
+        return this.currentLineIndex;
     }
 }
 

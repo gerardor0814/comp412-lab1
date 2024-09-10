@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String helpStatement = """
                 Command Syntax:
                         ./lab1_ref [flags] filename
@@ -86,7 +86,7 @@ public class Main {
 
     }
 
-    public static void runSFlag(Scanner scanner) throws IOException {
+    public static void runSFlag(Scanner scanner) {
             Trio currentWord;
             do {
                 currentWord = scanner.getNextWord();

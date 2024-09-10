@@ -12,7 +12,6 @@ public record Trio(int Category, int Words, int Line) {
      * 8 - INTO: “=>”
      * 9 - EOF: input has been exhausted
      * 10 - EOL: end of the current line
-     * 11 - Error, don't print.
      */
 
     @Override
