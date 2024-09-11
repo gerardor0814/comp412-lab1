@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cc712e1-e89a-453e-afdb-e19a47903930" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/412fe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IRNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +35,9 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.build (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.build.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -55,6 +56,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gerar\COMP412\comp412-lab1" />
+    </key>
+  </component>
   <component name="RunManager" selected="Makefile Target.build (1)">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -118,7 +124,8 @@
       <workItem from="1725220973770" duration="3526000" />
       <workItem from="1725224993064" duration="35039000" />
       <workItem from="1725639026506" duration="9034000" />
-      <workItem from="1725898362698" duration="26489000" />
+      <workItem from="1725898362698" duration="27917000" />
+      <workItem from="1726021371256" duration="873000" />
     </task>
     <servers />
   </component>
