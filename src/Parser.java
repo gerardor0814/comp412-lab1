@@ -54,9 +54,9 @@ public class Parser {
                                         this.valid = false;
                                         scanner.getNextLine();
                                     } else {
-                                        currentNode.next = new IRNode();
-                                        currentNode.next.prev = currentNode;
-                                        currentNode = currentNode.next;
+                                        currentNode.setNext(new IRNode());
+                                        currentNode.getNext().setPrev(currentNode);
+                                        currentNode = currentNode.getNext();
                                         count++;
                                     }
                                 } else {
@@ -90,9 +90,9 @@ public class Parser {
                                         this.valid = false;
                                         scanner.getNextLine();
                                     } else {
-                                        currentNode.next = new IRNode();
-                                        currentNode.next.prev = currentNode;
-                                        currentNode = currentNode.next;
+                                        currentNode.setNext(new IRNode());
+                                        currentNode.getNext().setPrev(currentNode);
+                                        currentNode = currentNode.getNext();
                                         count++;
                                     }
                                 } else {
@@ -128,9 +128,9 @@ public class Parser {
                                     this.valid = false;
                                     scanner.getNextLine();
                                 } else {
-                                    currentNode.next = new IRNode();
-                                    currentNode.next.prev = currentNode;
-                                    currentNode = currentNode.next;
+                                    currentNode.setNext(new IRNode());
+                                    currentNode.getNext().setPrev(currentNode);
+                                    currentNode = currentNode.getNext();
                                     count++;
                                 }
                             } else {
@@ -171,9 +171,9 @@ public class Parser {
                                                 this.valid = false;
                                                 scanner.getNextLine();
                                             } else {
-                                                currentNode.next = new IRNode();
-                                                currentNode.next.prev = currentNode;
-                                                currentNode = currentNode.next;
+                                                currentNode.setNext(new IRNode());
+                                                currentNode.getNext().setPrev(currentNode);
+                                                currentNode = currentNode.getNext();
                                                 count++;
                                             }
                                         } else {
@@ -222,9 +222,9 @@ public class Parser {
                                                 this.valid = false;
                                                 scanner.getNextLine();
                                             } else {
-                                                currentNode.next = new IRNode();
-                                                currentNode.next.prev = currentNode;
-                                                currentNode = currentNode.next;
+                                                currentNode.setNext(new IRNode());
+                                                currentNode.getNext().setPrev(currentNode);
+                                                currentNode = currentNode.getNext();
                                                 count++;
                                             }
                                         } else {
@@ -273,9 +273,9 @@ public class Parser {
                                                 this.valid = false;
                                                 scanner.getNextLine();
                                             } else {
-                                                currentNode.next = new IRNode();
-                                                currentNode.next.prev = currentNode;
-                                                currentNode = currentNode.next;
+                                                currentNode.setNext(new IRNode());
+                                                currentNode.getNext().setPrev(currentNode);
+                                                currentNode = currentNode.getNext();
                                                 count++;
                                             }
                                         } else {
@@ -324,9 +324,9 @@ public class Parser {
                                                 this.valid = false;
                                                 scanner.getNextLine();
                                             } else {
-                                                currentNode.next = new IRNode();
-                                                currentNode.next.prev = currentNode;
-                                                currentNode = currentNode.next;
+                                                currentNode.setNext(new IRNode());
+                                                currentNode.getNext().setPrev(currentNode);
+                                                currentNode = currentNode.getNext();
                                                 count++;
                                             }
                                         } else {
@@ -375,10 +375,10 @@ public class Parser {
                                                 this.valid = false;
                                                 scanner.getNextLine();
                                             } else {
+                                                currentNode.setNext(new IRNode());
+                                                currentNode.getNext().setPrev(currentNode);
+                                                currentNode = currentNode.getNext();
                                                 count++;
-                                                currentNode.next = new IRNode();
-                                                currentNode.next.prev = currentNode;
-                                                currentNode = currentNode.next;
                                             }
                                         } else {
                                             System.err.println("ERROR " + currentWord.Line() + ": Missing target register in rshift operation");
@@ -419,9 +419,9 @@ public class Parser {
                             this.valid = false;
                             scanner.getNextLine();
                         } else {
-                            currentNode.next = new IRNode();
-                            currentNode.next.prev = currentNode;
-                            currentNode = currentNode.next;
+                            currentNode.setNext(new IRNode());
+                            currentNode.getNext().setPrev(currentNode);
+                            currentNode = currentNode.getNext();
                             count++;
                         }
                     } else {
@@ -438,16 +438,16 @@ public class Parser {
                         this.valid = false;
                         scanner.getNextLine();
                     } else {
-                        currentNode.next = new IRNode();
-                        currentNode.next.prev = currentNode;
-                        currentNode = currentNode.next;
+                        currentNode.setNext(new IRNode());
+                        currentNode.getNext().setPrev(currentNode);
+                        currentNode = currentNode.getNext();
                         count++;
                     }
                 }
                 case 9 -> {
                     eof = true;
-                    this.tail = currentNode.prev;
-                    this.tail.next = null;
+                    this.tail = currentNode.getPrev();
+                    this.tail.setNext(null);
                 }
                 case 10 -> {
                     continue;
@@ -473,7 +473,7 @@ public class Parser {
         if (this.valid){
             while (currentNode != null) {
                 System.out.println(currentNode);
-                currentNode = currentNode.next;
+                currentNode = currentNode.getNext();
             }
         }
 

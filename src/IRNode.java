@@ -12,14 +12,13 @@
  * 10 - EOL: end of the current line
  */
 
-
 public class IRNode {
     int[] operands;
-    int line;
-    int opCategory;
-    int opCode;
-    IRNode next;
-    IRNode prev;
+    private int line;
+    private int opCategory;
+    private int opCode;
+    private IRNode next;
+    private IRNode prev;
 
     public IRNode() {
         operands = new int[12];
@@ -29,8 +28,16 @@ public class IRNode {
         this.next = next;
     }
 
+    public IRNode getNext() {
+        return next;
+    }
+
     public void setPrev(IRNode prev) {
         this.prev = prev;
+    }
+
+    public IRNode getPrev() {
+        return prev;
     }
 
     public void setOperands(int value, int index) {
