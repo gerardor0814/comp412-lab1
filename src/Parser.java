@@ -30,6 +30,30 @@ public class Parser {
     }
 
     public void parseP() {
+        this.parse();
+
+        if (scanner.hasErrors() || !this.valid) {
+            System.err.println("Parse found errors");
+        } else {
+            System.out.println("Parse succeeded. Processed " + count + " operations");
+        }
+    }
+
+    public void parseR() {
+        this.parse();
+        IRNode currentNode = head;
+        if (!scanner.hasErrors() && this.valid){
+            while (currentNode != null) {
+                System.out.println(currentNode);
+                currentNode = currentNode.getNext();
+            }
+        } else {
+            System.err.println("Due to syntax errors, run terminates");
+        }
+
+    }
+
+    public void parse() {
         Trio currentWord;
         IRNode currentNode = head;
         boolean eof = false;
@@ -459,23 +483,5 @@ public class Parser {
                 }
             }
         }
-
-        if (scanner.hasErrors() || !this.valid) {
-            System.err.println("Parse found errors");
-        } else {
-            System.out.println("Parse succeeded. Processed " + count + " operations");
-        }
-    }
-
-    public void parseR() {
-        this.parseP();
-        IRNode currentNode = head;
-        if (this.valid){
-            while (currentNode != null) {
-                System.out.println(currentNode);
-                currentNode = currentNode.getNext();
-            }
-        }
-
     }
 }
