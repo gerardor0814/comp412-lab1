@@ -1,2 +1,18 @@
 //NAME: Gerardo Ramirez del Rio
 //NETID: gr29
+
+To build program run:
+    make clean
+    make build
+
+In the directory with the Makefile
+
+Flags supported:
+    Optional flags:
+        -h       prints this message
+
+    At most one of the following three flags:
+        -s       prints tokens in token stream
+        -p       invokes parser and reports on success or failure
+        -r       prints human readable version of parser's IR
+    If none is specified, the default action is '-p'.;
