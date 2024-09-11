@@ -25,7 +25,7 @@ public class Parser {
     public Parser(Scanner scanner) {
         this.scanner = scanner;
         head = new IRNode();
-        valid = false;
+        valid = true;
         count = 0;
     }
 
@@ -53,6 +53,8 @@ public class Parser {
                                         System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in load operation");
                                         this.valid = false;
                                         scanner.getNextLine();
+                                    } else {
+                                        count++;
                                     }
                                 } else {
                                     System.err.println("ERROR " + currentWord.Line() + ": Missing target register in load operation");
@@ -84,6 +86,8 @@ public class Parser {
                                         System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in store operation");
                                         this.valid = false;
                                         scanner.getNextLine();
+                                    } else {
+                                        count++;
                                     }
                                 } else {
                                     System.err.println("ERROR " + currentWord.Line() + ": Missing target register in store operation");
@@ -117,6 +121,8 @@ public class Parser {
                                     System.err.println("ERROR " + currentWord.Line() + ": Extraneous argument in loadI operation");
                                     this.valid = false;
                                     scanner.getNextLine();
+                                } else {
+                                    count++;
                                 }
                             } else {
                                 System.err.println("ERROR " + currentWord.Line() + ": Missing target register in loadI operation");
@@ -419,8 +425,10 @@ public class Parser {
                     scanner.getNextLine();
                 }
             }
+            currentNode.next = new IRNode();
+            currentNode = currentNode.next;
         }
-        if (scanner.hasErrors()) {
+        if (scanner.hasErrors() || !this.valid) {
             System.err.println("Parse found errors");
         } else {
             System.out.println("Parse succeeded. Processed " + count + " operations");
@@ -429,8 +437,12 @@ public class Parser {
 
     public void parseR() {
         this.parseP();
+        IRNode currentNode = head;
         if (this.valid){
-            //print out IR
+            while (currentNode != null) {
+                System.out.println(currentNode);
+                currentNode = currentNode.next;
+            }
         }
 
     }
