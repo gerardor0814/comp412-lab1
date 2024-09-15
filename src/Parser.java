@@ -470,8 +470,10 @@ public class Parser {
                 }
                 case 9 -> {
                     eof = true;
-                    this.tail = currentNode.getPrev();
-                    this.tail.setNext(null);
+                    if (currentNode != this.head) {
+                        this.tail = currentNode.getPrev();
+                        this.tail.setNext(null);
+                    }
                 }
                 case 10 -> {
                     continue;

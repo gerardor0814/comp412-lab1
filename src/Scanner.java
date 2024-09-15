@@ -19,6 +19,7 @@ public class Scanner {
             fileReader = new FileReader(fileName);
         } catch (FileNotFoundException e) {
             System.err.println("ERROR: Could not open file " + fileName + " as the input file.");
+            hasErrors = true;
             return;
         }
         bufferedReader = new BufferedReader(fileReader);
@@ -52,8 +53,7 @@ public class Scanner {
                     hasErrors = true;
                     currentIndex = currentLineLength;
                 }
-            }
-            if (currentLine.charAt(currentIndex) == 's') {
+            } else if (currentLine.charAt(currentIndex) == 's') {
                 currentIndex++;
                 if (currentLine.charAt(currentIndex) == 't') {
                     currentIndex++;
@@ -403,6 +403,7 @@ public class Scanner {
             System.err.println("ERROR: Could not read next line from file");
         }
         if (this.currentLine == null) {
+            currentIndex = currentLineLength;
             return;
         } else {
             this.currentLine = this.currentLine + '\n';

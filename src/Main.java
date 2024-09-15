@@ -68,6 +68,9 @@ public class Main {
         }
 
         Scanner scanner = new Scanner(fileName);
+        if (scanner.hasErrors()) {
+            return;
+        }
         Parser parser = new Parser(scanner);
 
         switch (option) {
